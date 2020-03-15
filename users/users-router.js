@@ -6,7 +6,7 @@ router.get("/",async (req,res,next) => {
     try {
       const users = await userModal.find();
       if(users) {
-         res.status(200).json(users);
+        res.status(200).json(users);
       }
     }catch(err) {
        next(err);
