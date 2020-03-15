@@ -7,10 +7,10 @@ module.exports = {
       filename: './data/users.db3'
     },
     migrations: {
-      directory: "./database/migrations",
+      directory: "./migrations",
     },
     seeds: {
-      directory: "./database/seeds",
+      directory: "./seeds",
     },
     pool: {
       afterCreate: (conn, done) => {
