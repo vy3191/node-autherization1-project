@@ -13,11 +13,9 @@ async function findById(id) {
   return user;                      
 }
 
-async function findBy(filter) {
-   const users = await db('users')
-                        .select("id", "username", "password")
-                       .where(filter);
-   return users;                       
+function findBy(filter) {
+   return  db('users').select("id", "username", "password").where(filter);
+                          
 };
 
 async function add(user) {
