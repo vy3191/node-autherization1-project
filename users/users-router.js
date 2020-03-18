@@ -12,6 +12,13 @@ router.get("/", restrict, async (req,res,next) => {
     }catch(err) {
        next(err);
     }
+});
+
+router.get("/logout", restrict, (req,res,next) => {
+   req.session.destroy( (err) => {
+      if(err) next(err);
+      res.json({msg:'Successfully Logged out now.'});
+   })
 })
 
 module.exports = router;
