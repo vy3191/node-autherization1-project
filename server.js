@@ -2,7 +2,9 @@ const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
 const server = express();
+const dbConfig = require("./data/config");
 const session = require("express-session");
+const KnexSessionStore = require('connect-session-knex')(session);
 
 const welcomeRouter = require('./welcome/welcome-router');
 const usersRouter = require('./users/users-router');
@@ -18,7 +20,12 @@ server.use(session({
    secret: 'secret-key',
    cookie : {
       httpOnly: true
-   }
+   },
+   store: new KnexSessionStore({
+     knex:dbConfig,
+     createtable:true,
+   })
+
 }))
 
 
