@@ -41,8 +41,10 @@ router.post("/login", async (req,res,next) => {
             // res.setHeader('Authorization', authToken);
 
       // **********Setting the cookie headers *************      
-      res.setHeader('Set-Cookie', `token=${authToken}; path=/`);
-
+            // res.setHeader('Set-Cookie', `token=${authToken}; path=/`);
+      
+      // ************Setting the cookie using express-session *********
+      req.session.user = user;
       res.json({
 			message: `Welcome ${user.username}!`,
 		})

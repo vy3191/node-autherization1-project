@@ -11,6 +11,17 @@ const authRouter = require('./auth/auth-router');
 server.use(helmet());
 server.use(logger('tiny'));
 server.use(express.json());
+server.use(session({
+   name: 'token',
+   resave: false,
+   saveUninitialized:false,
+   secret: 'secret-key',
+   cookie : {
+      httpOnly: true
+   }
+}))
+
+
 server.use("/welcome", welcomeRouter);
 server.use("/users", usersRouter);
 server.use("/auth", authRouter);

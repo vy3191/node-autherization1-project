@@ -14,8 +14,8 @@ async function restrict(req,res,next) {
             // const authToken = cookie.replace('token=','');
             // if(!authToken) res.status(401).json({msg:'Invalid credentials'}); 
     
-    // ***********Try3:- Adding persistent sessions-State ful ********  
-     
+    // ***********Try3:- Adding persistent sessions-State ful *************
+           if(!req.session || !req.session.user) res.status(401).json({msg:'Invalid credentials'});
      next();
   }catch(err) {
      next(err);
