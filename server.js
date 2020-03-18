@@ -17,7 +17,7 @@ server.use(session({
    name: 'token',
    resave: false,
    saveUninitialized:false,
-   secret: 'secret-key',
+   secret: process.env.COOKIE_KEY || 'secret-key',
    cookie : {
       httpOnly: true
    },
