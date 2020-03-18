@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
 const server = express();
+const session = require("express-session");
 
 const welcomeRouter = require('./welcome/welcome-router');
 const usersRouter = require('./users/users-router');
