@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const userModal = require('../modals/users-modal');
+const {restrict} = require("../middleware/restrict");
 
-router.get("/",async (req,res,next) => {
+router.get("/", restrict, async (req,res,next) => {
     try {
       const users = await userModal.find();
       if(users) {
